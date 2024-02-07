@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding-Women</title>
+    <style>
+        /* Your existing CSS styles here */
+
+        /* New styles for the layout */
+        .container {
+            display: flex;
+            max-width: 1200px; /* Adjust as needed */
+            margin: 0 auto;
+        }
+        .wrape {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    background-color: white;
+    color: #bbb;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    background-color: white;
+    height: 100%;
+    min-height: 900px;
+    position: fixed;
+    left: 0px;
+}
+
+.sidebar .logo {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+	color: black;
+	margin-top: 20px;
+}
+.sidebar .logo span {
+    color: rgb(209, 58, 58);
+}
+ol {
+    /* border: 1px solid red; */
+    list-style: none;
+    width: 70%;
+    margin-top: 50px;
+}
+ol li a {
+    display: block;
+    text-decoration: none;
+    color:rgb(21, 20, 20);
+    font-size: 1.2rem;
+    padding: 23px 18px;
+	transform: translateY(124px);
+}
+ol li a:hover {
+    background-color: rgba(140, 119, 111, 0.098);
+    color:crimson;
+    border-radius: 5px;
+}
+ol li a i {
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+hr {
+    display: block;
+    width: 70%;
+    height: 2px;
+    border: none;
+    background-color: rgb(77, 74, 74);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 320px);
+    margin-left: 320px;
+}
+        .products {
+            flex: 1; /* Take remaining space */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            margin-top: 20px; /* Add margin from the top */
+            margin-left: 270px; /* Adjust for the sidebar width */
+        }
+
+        .product {
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product h2 {
+            font-size: 1.2rem;
+            margin: 5px 50px;
+        }
+
+        .product p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        /* Style links */
+        .product .links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .product p a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    {% extends "header.html" %}
+    {% load static %}
+    {% block content %}
+    <div class="container">
+        <div class="wrap">
+            <div class="sidebar">
+                <div class="logo"><span>Style</span>Sphere</div>
+                <hr>
+                <ol>
+                    <li><a href="{% url 'party_men' %}"><i class="fa-solid fa-person"></i>Men</a></li>
+                    <li><a href="{% url 'party_women' %}"><i class="fa-solid fa-person-dress"></i>Women</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="products">
+            {% for i in images %}
+            <div class="product">
+                <a href="{% url 'fullproduct' i.productId %}">
+                    <img src="{{ MEDIA_URL }}{{ i.image }}" alt="{{ i.name }}" />
+                </a>
+                <h2>{{ i.name }}</h2>
+                <p>{{ i.des }}</p>
+                <div class="links">
+                    {% for x in i.links %}
+                    <p><a href="{{ x.link }}" target="_blank">{{ x.linkname }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

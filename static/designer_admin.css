@@ -1,0 +1,70 @@
+/* Reset some default browser styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Apply styles to the header */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 29px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  nav ul {
+    list-style: none;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Apply styles to the sidebar */
+  .sidebar {
+    background-color: #555;
+    color: white;
+    width: 250px;
+    height: 80%;
+    position: relative;
+    top: 80px;
+    left: 0;
+    overflow-y: auto;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 20px;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Apply styles to the main content area */
+  main {
+    margin-left: 250px; /* Make room for the sidebar */
+    padding: 20px;
+  }
+  
+  /* Add some content for demonstration purposes */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  

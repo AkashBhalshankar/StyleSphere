@@ -1,0 +1,55 @@
+{%extends 'dashboard.html'%}
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table">
+        <thead>
+          <tr>
+            <!--<th scope="col" name="id">Sno</th>-->
+            <th scope="col" name="fname">First Name</th>
+            <th scope="col" name="lname">Last Name</th>
+            <th scope="col" name="uname">UserName</th>
+            <th scope="col" name="mail">Email Address</th>
+            <th scope="col" name="phone">Phone Number</th>
+            <th scope="col" name="gen">Gender</th>
+            <th scope="col" name="pass">PassWord</th>
+            <th scope="col" name="conpass">Confirm PassWord</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>Mr_Otto</td>
+            <td>abc@mdo</td>
+            <td>5678954</td>
+            <td>Male</td>
+            <td>9273</td>
+            <td>9273</td>
+          </tr>
+          {%for i in images%}
+          <tr>
+            <td>{{i.fname}}</td>
+            <td>{{i.lname}}</td>
+            <td>{{i.uname}}</td>
+            <td>{{i.mail}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.gen}}</td>
+            <td>{{i.pas}}</td>
+            <td>{{i.cpas}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+{%endblock%}
+</html>

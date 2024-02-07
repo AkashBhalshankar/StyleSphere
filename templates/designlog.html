@@ -1,0 +1,59 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{%static 'designlogin.css'%}">
+	<title>designerlogin</title>
+</head>
+<script>
+	function validate()
+   {
+	   var u=document.getElementById("un").value;
+	   if(u==""){
+		   alert("please enter username");
+		   return false;
+	   }
+	   var p=document.getElementById("pwd").value;
+	   if(p==""){
+		   alert("please enter password");
+		   return false;
+	   }
+	   var p=document.getElementById("id").value;
+	   if(id==""){
+		   alert("please enter password");
+		   return false;
+	   }
+	   return true;
+   }
+</script>
+<body>
+	<div class="pic">
+		<img src="" alt="">
+	</div>
+	<form action="" id="f1" method="POST">
+		{% csrf_token %}
+		<div class="card">
+        
+		<div class="username">
+			<img src="{%static 'ss3.png'%}" alt="">
+			<h1 class="head">Welcome</h1>
+			<input type="text" placeholder="Username" id="un" name="un">
+		</div>
+        <div class="id">
+			<input type="text" placeholder="Enter your ID" id="id" name="id">
+		</div>
+		<div class="password">
+			<input type="password" placeholder="password" id="pwd" name="pwd">
+		</div>
+		<div class="forgot">Forgot Password?</div>
+		<div class="btn">
+			<button class="login-btn" onclick="validate()" id="b1" name="b1">Login</button>
+		</div>
+		<div class="signup">Not a Member?<span><a href="{%url 'designerform'%}">Signup</a></span></div>
+	</div>
+	</form>
+	
+</body>
+</html>

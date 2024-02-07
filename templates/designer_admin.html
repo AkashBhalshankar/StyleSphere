@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'designer_admin.css'%}">
+    <title>Dashboard</title>
+    <script>
+        function log() {
+            window.location.href="designlog.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{%url 'home' %}">stylesphere</a></li>
+               
+                
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <li><a href="{%url 'home' %}">Home</a></li>
+            <li><a href="#">Designer</a></li>
+            <li><a href="#">customes</a></li>
+            <li><a href="#">designers</a></li>
+            <li><a href="#">modifications</a></li>
+            <li><a href="{%url 'add'%}" >Add-products</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <!-- Your main content goes here -->
+        <h1>Welcome to Designer's Dashboard</h1>
+    </main>
+</body>
+</html>

@@ -1,0 +1,114 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+
+<style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        .product-grid {
+            margin-top: 90px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .product {
+            display: flex;
+            align-items: center; /* Align items at the top */
+            border: 1px solid #ddd;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            width: 100%; /* Adjust width as needed */
+            width: 700px;
+            height: 500px;
+        }
+
+        .product-image {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-image img {
+            width: 100%; /* Occupy 100% width of container */
+            height: auto; /* Auto-adjust height to maintain aspect ratio */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0px;
+        }
+
+        .product-links {
+            font-size: 16px;
+        }
+
+        .product-links a {
+            display: block;
+            text-decoration: none;
+            color: #007BFF;
+            margin-bottom: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .product-links a:hover {
+            color: #0056b3;
+        }
+</style>
+</head>
+<body>
+    
+    <div class="product-grid">
+        {% for i in images %}
+        <div class="product">
+            <div class="product-image">
+                <a href="{% url 'fullproduct' i.productId %}">
+                    <img src="{{ MEDIA_URL }}{{ i.image }}" alt="{{ i.name }}">
+                </a>
+            </div>
+            <div class="product-details">
+                <h2 class="product-name">{{ i.name }}</h2>
+                <div class="product-links">
+                    {% for x in i.links %}
+                    <p><a href="{{ x.link }}" target="_blank">{{ x.linkname }}</a></p>
+                    {% endfor %}
+                </div>
+                <p>{{ i.des }}</p>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><div class="product-grid">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>

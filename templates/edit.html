@@ -1,0 +1,141 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 101vh;
+            background-image: url("{%static 'adde.svg'%}");
+
+        }
+
+        #container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.482);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        td img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+
+        .exstyle {
+            background-color: #333;
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        input[type="submit"],
+        input[type="button"] {
+            width: 86%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #0066cc;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <form id='f1' action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ productId }}
+        <table border='2'>
+            <tr>
+                <td class='exstyle'>Product Id</td>
+                <td>
+                    <input type='number' readonly id='productId' name='productId' value="{{ products.productId }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class='exstyle'>Product Name</td>
+                <td>
+                    <input type='text' id='name' name='name' value="{{ products.name }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class='exstyle'>image</td>
+                <td>
+                    <img src="{{ MEDIA_URL }}{{ products.image }}" height="200" width="200" alt=""/>
+                    <input type="file" id="image" name="image">
+                </td>
+            </tr>
+            <tr>
+                <td class='exstyle'>Description</td>
+                <td>
+                    <input type='text' id='des' name='des' value="{{ products.des }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>links</td>
+                {% for link in products.links %}
+                <td>
+                    <input type='text' id='link' name='link' value="{{ link }}"/>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>CategoryId</td>
+                <td>
+                    <input type='number' id='cate' name='cate' value="{{ products.cate }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class='exstyle'>Gender</td>
+                <td>
+                    <input type='number' id='gen' name='gen' value="{{ products.gen }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='submit' id='b1' name='b1' onclick="checkbutton('update')" value='Update'/>
+                </td>
+                <td>
+                    <input type='button' id='b3' name='b3' value='clear' onclick="clearDisplay()"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

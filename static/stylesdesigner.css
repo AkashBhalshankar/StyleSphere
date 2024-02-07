@@ -1,0 +1,166 @@
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+   
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 13px;
+    margin: 0; 
+    background: linear-gradient(to right bottom, rgb(236, 145, 145), rgb(237, 156, 176));
+     
+}
+   
+  input, textarea, select, button {
+    font-family: arial;
+    color: #333;
+    font-size: 14px; }
+   
+  p, h1, h2, h3, h4, h5, h6, ul {
+    margin: 0; }
+   
+  img {
+    max-width: 100%; }
+   
+  ul {
+    padding-left: 0;
+    margin-bottom: 0; }
+   
+  a:hover {
+    text-decoration: none; }
+   
+  :focus {
+    outline: none; }
+   
+  .wrapper {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; }
+   
+  .inner {
+    padding: 20px;
+    background: #fff;
+    max-width: 850px;
+    margin: auto;
+    display: flex; }
+    .inner .image-holder {
+        width: 50%; }
+    /*.image-holder
+    {
+      width: 50%;
+      object-fit: cover;
+      background-size: cover;
+      animation-name: slide;
+      animation-duration:  10s ;
+      animation-iteration-count: infinite;
+
+     }
+     @keyframes slide{
+        0%{background-image: url(m.webp);}
+        50%{background-image: url(m2.webp);}
+        75%{background-image: url(m3.webp);}
+        100%{background-image: url(m4.jpg);}
+     }*/
+    .inner form {
+      width: 50%;
+      padding-top: 36px;
+      padding-left: 45px;
+      padding-right: 45px; }
+    .inner h3 {
+      text-transform: uppercase;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 28px; }
+   
+  .form-group {
+    display: flex; }
+    .form-group input {
+      width: 50%; }
+      .form-group input:first-child {
+        margin-right: 25px; }
+   
+  .form-wrapper {
+    position: relative; }
+    .form-wrapper i {
+      position: absolute;
+      bottom: 9px;
+      right: 0; }
+   
+  .form-control {
+    border: 1px solid #333;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    margin-bottom: 25px; 
+}
+    .form-control::-webkit-input-placeholder {
+      font-size: 14px;
+      color: gray;
+      font-family: arial; }
+     
+  select {
+    font-size: 14px;
+    font-family: arial;
+    cursor: pointer;
+    padding-left: 20px; 
+    color: gray;
+}
+    select option[value=""][disabled] {
+      display: none; }
+   
+  button {
+    border: none;
+    width: 164px;
+    height: 51px;
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #333;
+    font-size: 15px;
+    color: #fff;
+  }
+  button:hover{
+    background: rgb(19, 161, 213);
+    color: black;
+  }
+  .select{
+    background-color: rgb(119, 104, 104);
+    height: 58px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    justify-content: space-around;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 300px;
+  }
+  .select a{
+    text-decoration: none;
+    color: black;
+
+  }
+   
+  @media (max-width: 767px) {
+    .inner {
+      display: block; }
+      .inner .image-holder {
+        width: 100%; }
+      .inner form {
+        width: 100%;
+        padding: 40px 0 30px; }
+   
+    button {
+      margin-top: 60px; } }

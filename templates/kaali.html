@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Product Page</title>
+</head>
+<style>
+	
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    background-color: white;
+    color: #bbb;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    background-color: white;
+    height: 100%;
+    min-height: 900px;
+    position: fixed;
+    left: 0px;
+}
+
+.sidebar .logo {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+	color: black;
+	margin-top: 20px;
+}
+.sidebar .logo span {
+    color: rgb(209, 58, 58);
+}
+ol {
+    /* border: 1px solid red; */
+    list-style: none;
+    width: 70%;
+    margin-top: 50px;
+}
+ol li a {
+    display: block;
+    text-decoration: none;
+    color:rgb(21, 20, 20);
+    font-size: 1.2rem;
+    padding: 23px 18px;
+	transform: translateY(124px);
+}
+ol li a:hover {
+    background-color: rgba(140, 119, 111, 0.098);
+    color:crimson;
+    border-radius: 5px;
+}
+ol li a i {
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+hr {
+    display: block;
+    width: 70%;
+    height: 2px;
+    border: none;
+    background-color: rgb(77, 74, 74);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 320px);
+    margin-left: 320px;
+}
+</style>
+<body>
+{% extends "header.html" %}
+{% load static %}
+{% block content %}
+    <div class="wrap">
+        <div class="sidebar">
+            <div class="logo"><span>Style</span>Sphere</div>
+            <hr>
+            <ol>
+                <li><a href="#"><i class="fa-solid fa-person"></i>Men</a></li>
+                <li><a href="#"><i class="fa-solid fa-person-dress"></i>Women</a></li>
+			</ol>
+        </div>
+	</div>
+	{%endblock%}
+</body>
+</html>

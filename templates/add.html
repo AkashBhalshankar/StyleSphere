@@ -1,0 +1,182 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+<style>
+    .popup {
+        width: 400px;
+        background: #fff;
+        border-radius: 6px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        text-align: center;
+        padding: 0 30px 30px;
+        color: #333;
+        visibility: hidden;
+        transition: transform 0.1s, top 0.1s;
+    }
+
+    .open-popup {
+        visibility: visible;
+        top: 50%;
+        transform: translate(-50%, -55%) scale(1.3);
+    }
+
+    .popup img {
+        width: 100px;
+        margin-top: -50px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup h2 {
+        font-size: 38px;
+        font-weight: 500;
+        margin: 30px 0 10px;
+    }
+
+    .popup button {
+        width: 50%;
+        margin-top: 50px;
+        padding: 10px 0;
+        background: #6fd649;
+        color: white;
+        border: 0;
+        outline: none;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+            max-width: 750px;
+            margin: 0 auto;
+            margin-top: 2%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            /*width: 100%;*/
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 70%;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .note {
+            font-style: italic;
+            color: #888;
+        }
+
+        .sub-button {
+            background-color: #6fd649;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sub-button:hover {
+            background-color: #5cb542;
+        }
+        .fm{
+            transform: translateY(-19%);
+            margin-left: -45%;
+        }
+        input[type=number],input[type=text]{
+            width: 100%;
+            outline: none;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            
+        }
+        input[type=number],input[type=text]:hover{
+            color: rgb(0, 0, 0);
+        }
+</style>
+
+<body>
+    <div class="all">
+        <form class="fm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table border="2" align="center" style="margin-top: 10%; margin-left: 30%;">
+                <tr><td>Image</td><td><input type="file" id="image" name="image"></td></tr>
+                <tr><td>Name</td><td><input type="text" id="name" name="name" placeholder="Write the combination name"></td></tr>
+                <tr><td>Description</td><td><input type="text" id="des" name="des" placeholder="Do not write any Description"></td></tr> 
+                <tr><td>Categories</td><td><input type="number" id="cate" name="cate" placeholder="501-wedding,502-ethnic,503-workout,504-party,505-formal,506-casuals"></td></tr>
+                <tr><td>Gender</td><td><input type="number" id="gen" name="gen" placeholder="Men-1,Women-2"> </td></tr>
+                <tr><td>Links</td><td><input type="text" id="link" name="link" placeholder="links bind like: Shirt$http//ajio/shirts?buy,Pant$http//myntra/pants?buy"></td></tr>
+                <tr><td colspan="2">Note: Separate links with commas and with $('Shirt$ link1 ,pant$ link2')</td></tr>
+                <tr><td><button  type="button" onclick="submitForm()" id="save" name="save" value="submit" class="sub-button">Submit</button></td></tr>
+            </table>
+        </form>
+        <div class="popup" id="popup">
+            <img src="{% static '404-tick.png' %}">
+            <h2>Thank You!</h2>
+            <p>Your details have been successfully submitted. Thanks!</p>
+            <button type="button" onclick="closePopup()">OK</button><br>
+        </div>
+    </div>
+</body>
+<script>
+    function validateForm() {
+        var img = document.getElementById("image").value;
+        var p = document.getElementById("name").value;
+        var des = document.getElementById("des").value;
+        var link = document.getElementById("link").value;
+
+        if (img === "" || p === "" || link === "") {
+            alert("Please fill in all fields.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function submitForm() {
+        if (validateForm()) {
+            openPopup();
+            setTimeout(function() {
+                document.forms[0].submit();
+            }, 2000); // Delay form submission for 2 seconds (adjust as needed)
+        }
+    }
+
+    function openPopup() {
+        var popup = document.getElementById("popup");
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.classList.remove("open-popup");
+    }
+</script>
+</html>
+{% endblock %}

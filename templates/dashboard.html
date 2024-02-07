@@ -1,0 +1,34 @@
+{%load static%}
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sider Menu Bar CSS</title>
+    <link rel="stylesheet" href="{%static 'dashboard.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+    <header>StyleSphere</header>
+    <ul>
+     <li><a href="{%url 'dashheader'%}"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+     <li><a href="{%url 'userlogins'%}"><i class="fa-solid fa-shirt"></i>Customers</a></li>
+     <li><a href="{%url 'designerlogins'%}"><i class="fa-solid fa-shirt"></i>Designers</a></li>
+     <li><a href="{%url 'gridindex'%}"><i class="fa-solid fa-bolt"></i>Modify Product</a></li>
+     <li><a href="{%url 'add'%}"><i class="fa-solid fa-plus"></i>Add Product</a></li>
+     <li><a href="{%url 'home'%}"><i class="fa-solid fa-house"></i>Home</a></li>
+     <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+    </ul>
+   </div>
+   <section>
+    {%block content %}
+    {% endblock%}
+   </section>
+  </body>
+</html>

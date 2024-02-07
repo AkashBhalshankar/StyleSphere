@@ -1,0 +1,173 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'stylesdesigner.css'%}">
+    <title>Designer</title>
+    <script>
+      /*function validate() {
+            var fn = document.getElementById("fn").value;
+            var ln = document.getElementById("ln").value;
+            var un = document.getElementById("un").value;
+            var mail = document.getElementById("mail").value;
+            var pn = document.getElementById("pn").value;
+            var gn = document.getElementById("gender").value;
+            var pw = document.getElementById("pw").value;
+            var cpw = document.getElementById("cpw").value;
+
+            // Validate First Name and Last Name (Not Empty)
+            if (fn === "" || ln === "") {
+                alert("Please enter both First Name and Last Name.");
+                return false;
+            }
+
+            // Validate Username (Not Empty)
+            if (un === "") {
+                alert("Please enter a username.");
+                return false;
+            }
+
+            // Validate Email Address (Not Empty and Format)
+            if (mail === "") {
+                alert("Please enter your email address.");
+                return false;
+            } else if (!validateEmail(mail)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Validate Phone Number (Format)
+            if (pn === "" || !validatePhoneNumber(pn)) {
+                alert("Please enter a valid Indian phone number.");
+                return false;
+            }
+
+            // Validate Gender (Not "None")
+            if (gn === "None") {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            // Validate Password (Strong Password)
+            if (!isStrongPassword(pw)) {
+              var criteriaMessage = "Your password should meet the following criteria:\n\n" +
+        "- At least 8 characters long.\n" +
+        "- Contains at least one letter (uppercase or lowercase).\n" +
+        "- Contains at least one number (0-9).";
+        alert(criteriaMessage);
+                return false;
+            }
+
+            // Validate Confirm Password (Matches Password)
+            if (pw !== cpw) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // If all validations pass, return true to submit the form
+            return true;
+        }
+
+        function validateEmail(email) {
+            // You can implement a regex pattern for email validation here.
+            // For a simple example, you can check if it contains "@" and "."
+            return email.includes("@") && email.includes(".");
+        }
+
+        function validatePhoneNumber(phoneNumber) {
+    // Remove any spaces or non-digit characters from the phone number
+    var cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+
+    // Check if the cleaned phone number has exactly 10 digits
+    return cleanedPhoneNumber.length === 10;
+}
+
+
+        function isStrongPassword(password) {
+            // You can implement your own password strength criteria here.
+            // For example, at least 8 characters, with a mix of letters, numbers, and symbols.
+            
+            var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+            return passwordRegex.test(password);
+        }
+        function showPasswordCriteria() {
+    var criteriaMessage = "Your password should meet the following criteria:\n\n" +
+        "- At least 8 characters long.\n" +
+        "- Contains at least one letter (uppercase or lowercase).\n" +
+        "- Contains at least one number (0-9).";
+
+    alert(criteriaMessage);
+}*/
+function validate() {
+      var pwd = document.getElementById('pwd').value;
+      var cpwd = document.getElementById('cpwd').value;
+
+      if (pwd.length < 8) {
+        alert("Password must be at least 8 characters long");
+        return false;
+      }
+
+      if (pwd !== cpwd) {
+        alert("Passwords do not match");
+        return false;
+      }
+    }
+    </script>
+</head>
+<body>
+  <div class="select">
+    <div class="one"><a href="{%url 'signup'%}"><h4>Customer</h4></a></div>
+    <div class="two"><a href="#"><h4>Designer</h4></a></div>
+  </div>
+      <div class="wrapper">
+        <div class="inner">
+        <div class="image-holder">
+        <img src="{%static 'do.jpg'%}" alt="image">
+        </div>
+        <form action="" method="post" id="f1" onsubmit="return validate();">
+          {% csrf_token %}
+        <h3>Designer Registration Form</h3>
+        <div class="form-group">
+        <input type="text" placeholder="First Name" required class="form-control" id="fn" name="fn" required>
+        <input type="text" placeholder="Last Name" class="form-control" id="ln" name="ln">
+        </div>
+        <div class="form-wrapper">
+        <input type="text" placeholder="Username" required class="form-control" id="un" name="un" required>
+         
+        </div>
+        <div class="form-wrapper">
+        <div class="form-wrapper">
+        <input type="email" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" id="mail" name="mail" required>
+        <input type="number"  pattern="[6-9]\d{9}" placeholder="phone Number" class="form-control" id="pn" name="pn" required>
+         
+        </div>
+        <div class="form-wrapper">
+        <select name="gender" id="gender" class="form-control">
+        <option value="" disabled selected>Gender</option>
+        <option value="male">Male</option>
+        <option value="femal">Female</option>
+        <option value="other">Other</option>
+        </select>
+        </div>
+        <input type="text" placeholder="Qualification" class="form-control" id="ql" name="ql">
+        <input type="text"  placeholder="Work Experience: Company Name, Years" class="form-control" id="wk" name="wk" required>
+        <input type="text" placeholder="Create your Id" class="form-control" id="id" name="id" required>
+        <div class="form-wrapper">
+        <input type="password" placeholder="Password" class="form-control" id="pwd" name="pwd" required>
+         
+        </div>
+        <div class="form-wrapper">
+        <input type="password" placeholder="Confirm Password" class="form-control" id="cpwd" name="cpwd" required>
+         
+        </div>
+        <button id="b1" name="b1">Register</button><br>
+        <p style="margin-left: 90px;"><a href="{%url 'forgot_password'%}" style="text-decoration: none;">Forgot Password?</a></p>
+        <p style="margin-left: 50px;">Already have a account? <a href="{%url 'designlog'%}" style="text-decoration: none;">Click Here</a></p>
+        <!--<button>Login</button>-->
+        </form>
+        </div>
+        </div>
+</body>
+</html>

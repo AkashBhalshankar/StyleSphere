@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin Login</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Apply a background color and set a font family */
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center the login form vertically and horizontally */
+        .pic {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Style the login card */
+        .card {
+            background-color: #fff;
+            box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.2s; 
+			transition: all ease 2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style the logo */
+        .username img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the form elements */
+        .username input,
+        .password input {
+            width: 100%;
+            padding: 10px;
+            margin: 13px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Style the login button */
+        .login-btn {
+			margin-top: 25px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #56ee56;
+        }
+
+        /* Style the "Forgot Password" link */
+        .forgot a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+		h1{
+			transform: translateY(-30px);
+		}
+    </style>
+    <script>
+        function validate() {
+            var username = document.getElementById('un').value;
+            var password = document.getElementById('pwd').value;
+
+            if (username.trim() === '' || password.trim() === '') {
+                alert('Username and Password are required!');
+                return false; // Prevent form submission
+            }
+
+            // You can add more complex validations if needed
+            
+            return true; // Allow form submission
+            alert("login successfull");
+            
+        }
+    
+    </script>
+</head>
+<body>
+
+    <form action="" id="f1" method="POST">
+        {% csrf_token %}
+        <div class="card">
+            <div class="username">
+                <img src="{% static 'ss3.png' %}" alt="">
+                <h1 class="head">Hello Admin</h1>
+                <input type="text" placeholder="Username" id="un" name="un">
+            </div>
+            <div class="password">
+                <input type="password" placeholder="Password" id="pwd" name="pwd">
+            </div>
+            <div class="forgot"><a href="{% url 'forgot_password' %}">Forgot Password?</a></div>
+            <div class="btn">
+                <button class="login-btn" onclick="validate()" id="b1" name="b1">Login</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,89 @@
+body{
+	background: linear-gradient(to right , rgb(230, 236, 145), rgb(252, 146, 108));
+}
+.card{
+	margin-top: 5%;
+	margin-left: 40%;
+	width: 330px;
+	height: 530px;
+	border-radius: 20px;
+	background-color: #d1dfed;
+	text-align: center;
+	border: 2px solid black;
+
+}
+.username input{
+	margin-top: 20px;
+	border: none;
+	outline: none;
+	font-size: 22px;
+	outline: none;
+	background: transparent;
+	border-bottom: 2px solid black;
+	
+	transition: 0.3s ease;
+}
+.id input{
+    margin-top: 20px;
+		border: none;
+		outline: none;
+		font-size: 22px;
+		border-bottom: 2px solid black;
+		background: transparent;
+}
+.password input{
+		margin-top: 20px;
+		border: none;
+		outline: none;
+		font-size: 22px;
+		border-bottom: 2px solid black;
+		background: transparent;
+
+	}
+	.forgot{
+		margin-top: 20px;
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	.btn .login-btn{
+			width: 240px;
+			height: 40px;
+			background-color: rgb(0, 118, 202);
+			border: none;
+			color: white;
+			font-size: 18px;
+			border-radius: 20px;
+			margin-top: 40px;
+			cursor: pointer;
+		}
+		.btn .login-btn:hover{
+			font-size: 22px;
+            background-color: rgb(61, 202, 0);
+		}
+		.signup{
+			margin-top: 20px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		span{
+			margin-top: 20px;
+			font-size: 18px;
+			color: rgb(236, 189, 72);
+
+		}
+		.username img{
+			border-radius: 50%;
+			width: 100px;
+			transform: translateY(30px);
+			transition: all ease 1s;
+		}
+		.username img:hover{
+			scale: 1.1;
+		}
+        span a:link{
+            text-decoration: none;
+            color:rgb(236, 189, 72);
+        }
+
+	

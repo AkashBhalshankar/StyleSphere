@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .note {
+            font-style: italic;
+            color: #888;
+        }
+
+        .submit-button {
+            background-color: #6fd649;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #5cb542;
+        }
+
+        .popup {
+            width: 400px;
+            background: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .popup img {
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .popup h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .popup p {
+            margin-bottom: 20px;
+        }
+
+        .popup-button {
+            background-color: #6fd649;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .popup-button:hover {
+            background-color: #5cb542;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table border="2" align="center" style="margin-top: 10%; margin-left: 30%;">
+                <tr><td>Image</td><td><input type="file" id="image" name="image"></td></tr>
+                <tr><td>Name</td><td><input type="text" id="name" name="name"></td></tr>
+                <tr><td>Description</td><td><input type="text" id="des" name="des"></td></tr>
+                <tr><td>Categories</td><td><input type="number" id="cate" name="cate"></td></tr>
+                <tr><td>Gender</td><td><input type="number" id="gen" name="gen"></td></tr>
+                <tr><td>Links</td><td><input type="text" id="link" name="link"></td></tr>
+                <tr><td colspan="2">Note: Separate links with commas and with $('Shirt$ link1 ,pant$ link2')</td></tr>
+                <tr><td><button type="button" onclick="submitForm()" id="save" name="save" class="submit-button">Submit</button></td></tr>
+            </table>
+        </form>
+        <div class="popup" id="popup">
+            <img src="{% static '404-tick.png' %}">
+            <h2>Thank You!</h2>
+            <p>Your details have been successfully submitted. Thanks!</p>
+            <button type="button" onclick="closePopup()" class="popup-button">OK</button><br>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            var img = document.getElementById("image").value;
+            var p = document.getElementById("name").value;
+            var des = document.getElementById("des").value;
+            var link = document.getElementById("link").value;
+
+            if (img === "" || p === "" || link === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function submitForm() {
+            if (validateForm()) {
+                openPopup();
+                setTimeout(function() {
+                    document.forms[0].submit();
+                }, 2000); // Delay form submission for 2 seconds (adjust as needed)
+            }
+        }
+
+        function openPopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.remove("open-popup");
+        }
+    </script>
+</body>
+</html>

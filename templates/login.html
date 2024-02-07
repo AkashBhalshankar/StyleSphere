@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+	
+    <title>Login</title>
+    <style>
+        /* Add CSS styles here */
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Apply a background color */
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+			background-image: url("{%static 'backlog.webp'%}");
+			background-repeat: no-repeat;
+			background-size: cover;
+        }
+
+        /* Center the login form vertically and horizontally */
+        .pic {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Style the login card */
+        .card {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
+            animation: fadein 1s ease-in-out forwards; /* Apply the fade-in animation */
+        }
+
+        /* Style the logo */
+        .username img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the form elements */
+        .username input,
+        .password input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Style the login button */
+        .login-btn {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+
+        
+        /* Style the "Forgot Password" link */
+        .forgot a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style the "Not a Member" link */
+        .signup {
+            margin-top: 10px;
+        }
+
+        .signup a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+		h1{
+			transform: translateY(-30px);
+			color: rgb(19, 18, 16);
+		}
+
+        /* Keyframes for the fade-in animation */
+		@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Start the animation from above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End the animation at its original position */
+    }
+}
+
+		.botto{
+			height: 40%;
+			width: 100%;
+			background: linear-gradient(black);
+			position: absolute;
+			bottom: -40%;
+			transition: all ease 0.5;
+		}
+		.card:hover .botto{
+			bottom: 0;
+
+		}
+    </style>
+</head>
+<body>
+    <div class="pic">
+        <img src="" alt="">
+    </div>
+    <form action="" id="f1" method="POST">
+        {% csrf_token %}
+        <div class="card">
+			<div class="bott">
+				<div class="username">
+					<a href="{% url 'home' %}"><img src="{% static 'ss3.png' %}" alt=""></a>
+					<h1 class="head">Welcome back</h1>
+					<input type="text" placeholder="Username" id="un" name="un">
+				</div>
+				<div class="password">
+					<input type="password" placeholder="Password" id="pwd" name="pwd">
+				</div>
+				<div class="forgot"><a href="{% url 'forgot_password' %}">Forgot Password?</a></div>
+				<div class="btn">
+					<button class="login-btn" onclick="validate()" id="b1" name="b1">Login</button>
+				</div>
+				<div class="signup">Not a Member?<span><a href="{% url 'signup' %}">Signup</a></span></div>
+                <div class="signup">login for<span><a href="{% url 'designlog' %}">designer</a></span></div>
+			</div>
+        </div>
+    </form>
+
+    <script>
+        // JavaScript to hide loading overlay when the page is fully loaded
+        window.addEventListener("load", function () {
+            var loadingOverlay = document.querySelector(".loading");
+            loadingOverlay.classList.add("hide");
+        });
+
+        function validate() {
+            var u = document.getElementById("un").value;
+            if (u == "") {
+                alert("Please enter a username.");
+                return false;
+            }
+            var p = document.getElementById("pwd").value;
+            if (p == "") {
+                alert("Please enter a password.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

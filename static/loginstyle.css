@@ -1,0 +1,111 @@
+body{
+	background: linear-gradient(to right , rgb(215, 245, 193), rgb(248, 247, 246));
+}
+.card{
+	margin-top: 10%;
+	margin-left: 40%;
+	width: 330px;
+	height: 490px;
+	border-radius: 20px;
+	background-color: rgb(244, 236, 236);
+	text-align: center;
+	border: 2px solid black;
+
+}
+.username input{
+	margin-top: 20px;
+	border: none;
+	outline: none;
+	font-size: 22px;
+	outline: none;
+	background: transparent;
+	border-bottom: 2px solid black;
+	
+	transition: 0.3s ease;
+}
+.password input{
+		margin-top: 20px;
+		border: none;
+		outline: none;
+		font-size: 22px;
+		border-bottom: 2px solid black;
+		background: transparent;
+
+	}
+	.forgot{
+		margin-top: 20px;
+		font-size: 18px;
+		cursor: pointer;
+	}
+.forgot a{
+	text-decoration: none;
+	color: rgb(20, 29, 21);
+
+}
+.forgot a:hover{
+	color: crimson;
+	
+}
+
+	.btn .login-btn{
+			width: 240px;
+			height: 40px;
+			background-color: rgb(0, 118, 202);
+			border: none;
+			color: white;
+			font-size: 18px;
+			border-radius: 20px;
+			margin-top: 40px;
+			cursor: pointer;
+			transition: all ease 1s;
+		}
+		.btn .login-btn:hover{
+			font-size: 22px;
+			background-color: rgb(61, 202, 0);
+			transform: scale(1.1);
+		}
+		.signup{
+			margin-top: 20px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		span{
+			margin-top: 20px;
+			font-size: 18px;
+			color: rgb(236, 189, 72);
+
+		}
+		.username img {
+			border-radius: 50%;
+			width: 100px;
+			transform: translateY(-20px);
+			transition: all ease 1s;
+		}
+		.username img:hover{
+			scale: 1.1;
+		}
+		span a{
+			text-decoration: none;
+			color: rgb(236, 72, 72);;
+		}
+		.select{
+			background-color: rgb(119, 104, 104);
+			height: 58px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			padding-top: 20px;
+			justify-content: space-around;
+			font-size: 15px;
+			font-family: sans-serif;
+			font-weight: 300px;
+		  }
+		  .select a{
+			text-decoration: none;
+			color: black;
+		
+		  }
+		
+
+
+	

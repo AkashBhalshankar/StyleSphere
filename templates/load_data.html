@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataload</title>
+</head>
+<body>
+    <form action="" enctype="multipart/form-data" method="post">
+        <table border="2">
+            {%for i in images%}
+            <tr><td>
+                {{i.image}}
+                <img src="{{MEDIA_URL}}{{  i.image }}" height="200" width="200" alt=""/>
+            </td></tr>
+            <tr>
+                <td>
+                    {{i.name}}
+                </td>
+
+            </tr>
+            <tr><td>
+                {{i.des}}
+            </td></tr>
+            <tr><td>
+                {{i.links}}
+            </td></tr>
+            {%endfor%}
+            
+        </table>
+    </form>
+</body>
+</html>
