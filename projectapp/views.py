@@ -1220,13 +1220,13 @@ def casual_women(request):
     return render(request,'casual_women.html',{"images":images,"MEDIA_URL":settings.MEDIA_URL})
 
 
-def home(request):
+def index(request):
     if(request.method=="POST"):
         searchkey=request.POST['search']
         request.session["searchkey"]=searchkey
         return redirect('search')
     else:
-        return render(request, 'home.html')
+        return render(request, 'index.html')
     
 def homelogout(request):
     if(request.method=="POST"):
